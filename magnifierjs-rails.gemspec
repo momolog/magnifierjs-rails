@@ -8,12 +8,12 @@ Gem::Specification.new do |spec|
   spec.version       = Magnifierjs::Rails::VERSION
   spec.authors       = ["Alexander Presber"]
   spec.email         = ["post@momolog.info"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = %q{magnifying glass for images}
+  spec.summary       = %q{magnifying glass for images}
   spec.homepage      = ""
   spec.license       = "MIT"
 
-  spec.files         = Dir["{lib,vendor}/**/*"] + ["MIT-LICENSE", "README.md"]
+  spec.files         = Dir["{lib,vendor}/**/*"] + ["LICENSE.txt", "README.md"]
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]

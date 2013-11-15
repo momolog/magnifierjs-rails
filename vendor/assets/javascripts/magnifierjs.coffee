@@ -1,27 +1,53 @@
-W = 1341
-H = 1171
-w = 670
-h = 585
-
 $ ->
-  $("#zoomimage").mouseover (e) ->
-    $(document).mousemove(myMM)
-    $("#glass").fadeIn('slow')
+  image = $("#magnifierjs-image")
+  larW  = 0
+  larH  = 0
 
-myMM = (e) ->
-  image = $("#zoomimage")
-  glass = $("#glass")
+  glass = $('<div id="magnifierjs-glass"></div>').appendTo($('body'))
 
-  xPosition = e.pageX - image.offset().left
-  yPosition = e.pageY - image.offset().top
-  backgroundXPosition = glass.width() / 2 - xPosition*W/w
-  backgroundYPosition = glass.height()/ 2 - yPosition*H/h
+  setLargeSrc = () ->
+    largeSrc  = image.data('magnifierjs-zoomimage')
 
-  glass.css
-    'left': xPosition-100
-    'top':  yPosition-100
-    'background-position': backgroundXPosition+"px "+backgroundYPosition+"px"
+    loader = $('<img>')
+    loader.load -> 
+      larW = this.width
+      larH = this.height
+    loader.attr('src', largeSrc)
+    glass.css 'background-image': "url("+largeSrc+")"
 
-  if (backgroundXPosition<-W || backgroundYPosition<-H || backgroundXPosition>200 || backgroundYPosition>200)
-    image.unbind('mousemove', myMM)
-    glass.fadeOut('fast')
+  setLargeSrc()
+
+  image.mouseover ->
+    setLargeSrc()
+    $(document).mousemove(moveGlass)
+    glass.fadeIn('slow')
+
+  moveGlass = (e) ->
+    imgW = image.width()
+    imgH = image.height()
+    imgX = image.offset().left
+    imgY = image.offset().top
+
+    curX = e.pageX
+    curY = e.pageY
+
+    glaX = curX - glass.width() / 2
+    glaY = curY - glass.width() / 2
+
+    innX = curX - imgX
+    innY = curY - imgY
+
+    bgX  = glass.width() / 2 - innX * larW / imgW
+    bgY  = glass.height()/ 2 - innY * larH / imgH
+    # console.log larW+" "+larH+" "+bgX+" "+bgY
+
+    glass.css
+      'left': glaX
+      'top':  glaY
+      'background-position': bgX+"px "+bgY+"px"
+
+    # console.log imgX+" "+curX+" "+(imgX + imgW)+"  | "+imgY+" "+curY+" "+(imgY + imgH)
+    if (curX < imgX) || (curY < imgY) || (curX > (imgX + imgW)) || (curY > (imgY + imgH))
+      # console.log "OUT >>"
+      $(document).unbind('mousemove', moveGlass)
+      glass.fadeOut('fast')

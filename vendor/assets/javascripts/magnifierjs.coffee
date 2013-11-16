@@ -1,4 +1,8 @@
 $ ->
+  # preload all zoom-images
+  $('*[data-magnifierjs-zoomimage]').each (el) ->
+    $('<img/>')[0].src = $(this).data('magnifierjs-zoomimage')
+
   image = $("#magnifierjs-image")
   larW  = 0
   larH  = 0

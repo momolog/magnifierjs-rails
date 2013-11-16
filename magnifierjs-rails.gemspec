@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Magnifierjs::Rails::VERSION
   spec.authors       = ["Alexander Presber"]
   spec.email         = ["post@momolog.info"]
-  spec.description   = %q{magnifying glass for images}
-  spec.summary       = %q{magnifying glass for images}
+  spec.description   = "simple magnifying glass for images"
+  spec.summary       = "magnifying glass for images"
   spec.homepage      = ""
   spec.license       = "MIT"
 

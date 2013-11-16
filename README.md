@@ -20,9 +20,9 @@ Or install it yourself as:
 
 ## Usage
 
-magnifierjs will look for an image with the id magnifierjs-image and an
-attribute magnifierjs-zoomimage, containing a URL to a larger version of the same image. 
-It will then displaya magnifying glass with the larger image on hover.
+magnifierjs will look for an image with the id `magnifierjs-image` and an
+attribute `data-magnifierjs-zoomimage`, containing a URL to a larger version of the same image. 
+It will then display a magnifying glass with the larger image on hover.
 
 ## Contributing
 

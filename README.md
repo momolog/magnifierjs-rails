@@ -1,6 +1,8 @@
 # Magnifierjs::Rails
 
-TODO: Write a gem description
+This gem is a drop-in solution for an image magnifier looking like this:
+
+![magnifier](http://public.momolog.info/magnifier.png)
 
 ## Installation
 
@@ -18,7 +20,9 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+magnifierjs will look for an image with the id magnifierjs-image and an
+attribute magnifierjs-zoomimage, containing a URL to a larger version of the same image. 
+It will then displaya magnifying glass with the larger image on hover.
 
 ## Contributing
 

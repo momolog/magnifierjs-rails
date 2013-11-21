@@ -21,10 +21,12 @@ $ ->
 
   setLargeSrc()
 
-  image.mouseover ->
-    setLargeSrc()
-    $(document).mousemove(moveGlass)
-    glass.fadeIn('slow')
+  # show the glass only when everything is loaded
+  $(window).load ->
+    image.mouseover ->
+      setLargeSrc()
+      $(document).mousemove(moveGlass)
+      glass.fadeIn('slow')
 
   moveGlass = (e) ->
     imgW = image.width()

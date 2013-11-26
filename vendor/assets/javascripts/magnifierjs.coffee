@@ -4,6 +4,7 @@ $ ->
     $('<img/>')[0].src = $(this).data('magnifierjs-zoomimage')
 
   image = $("#magnifierjs-image")
+  return unless image.size()
   larW  = 0
   larH  = 0
 
